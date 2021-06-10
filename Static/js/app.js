@@ -35,4 +35,15 @@ button.on("click", function(event) {
 
   console.log(filteredData);
   tableDisplay(filteredData);
+
+var button = d3.select("#reset-btn");
+
+button.on("click", function(event) {
+  d3.event.preventDefault();
+  deleteTbody();
+  };
+
+  console.log(filteredData);
+  tableDisplay(filteredData);
+
 });
