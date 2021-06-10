@@ -39,70 +39,54 @@
                         <label for="date">Enter a Date</label>
                         <input class="form-control" id="datetime" type="text" placeholder="1/01/2021">
                       </li>
+                      <li class="filter list-group-item">
+                        <label for="City">Enter a City</label>
+                        <input class="form-control" id="City" type="text" placeholder="Wilmington">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="State">Enter a State</label>
+                        <input class="form-control" id="State" type="text" placeholder="North Carolina">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="Country">Enter a Country</label>
+                        <input class="form-control" id="Country" type="text" placeholder="United States">
+                      </li>
+                      <li class="filter list-group-item">
+                        <label for="Shape">Enter a Shape</label>
+                        <input class="form-control" id="Shape" type="text" placeholder="Circle">
+                      </li>
                     </ul>
                   </div>
-                  <div class="form-group">
-                        <ul class="list-group" id="filters">
-                          <li class="filter list-group-item">
-                              <label for="City">Enter a City</label>
-                              <input class="form-control" id="City" type="text" placeholder="Wilmington">
-                          </li>
-                        </ul>
-                  </div>
-                  <div class="form-group">
-                        <ul class="list-group" id="filters">
-                          <li class="filter list-group-item">
-                              <label for="State">Enter a State</label>
-                              <input class="form-control" id="State" type="text" placeholder="North Carolina">
-                          </li>
-                        </ul>
-                  </div>
-                  <div class="form-group">
-                      <ul class="list-group" id="filters">
-                        <li class="filter list-group-item">
-                            <label for="Country">Enter a Country</label>
-                            <input class="form-control" id="Country" type="text" placeholder="United States">
-                        </li>
-                      </ul>
-                  </div>
-                  <div class="form-group">
-                      <ul class="list-group" id="filters">
-                        <li class="filter list-group-item">
-                            <label for="Shape">Enter a Shape</label>
-                            <input class="form-control" id="Shape" type="text" placeholder="Circle">
-                        </li>
-                      </ul>
-                  </div>
-                <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>
-                <button id="reset-btn" type="reset" class="btn btn-default">Reset Table</button>
-              </form>
+                  <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>
+                  <button id="reset-btn" type="reset" class="btn btn-default">Reset Table</button>
+                </form>
+              </div>
             </div>
+          </aside>
+        </div>
+        <div class="col-md-10">
+          <div id="table-area" class="">
+            <table id="ufo-table" class="table table-striped">
+              <thead>
+                <tr>
+                  <th class="table-head">Date</th>
+                  <th class="table-head">City</th>
+                  <th class="table-head">State</th>
+                  <th class="table-head">Country</th>
+                  <th class="table-head">Shape</th>
+                  <th class="table-head">Duration</th>
+                  <th class="table-head">Comments</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
           </div>
-        </aside>
-      </div>
-      <div class="col-md-10">
-        <div id="table-area" class="">
-          <table id="ufo-table" class="table table-striped">
-            <thead>
-              <tr>
-                <th class="table-head">Date</th>
-                <th class="table-head">City</th>
-                <th class="table-head">State</th>
-                <th class="table-head">Country</th>
-                <th class="table-head">Shape</th>
-                <th class="table-head">Duration</th>
-                <th class="table-head">Comments</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
         </div>
       </div>
     </div>
-  </div>
-  <footer class="footer">
-    <span class="bottom">UFO Sightings</span>
-  </footer>
+    <footer class="footer">
+      <span class="bottom">UFO Sightings</span>
+    </footer>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
   <script src="Static/js/data.js"></script>
