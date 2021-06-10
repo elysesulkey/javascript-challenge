@@ -40,7 +40,7 @@ var filterButton = d3.select("#filter-btn");
 var resetButton = d3.select("#reset-btn");
 
 // create a function for filtering the data with the input
-function filter(){
+function filterData(){
 
     // Prevent the webpage from refreshing
     d3.event.preventDefault();
