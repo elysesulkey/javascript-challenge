@@ -1,8 +1,8 @@
 var tableData = data;
 
-function tableDisplay(ufoSightings) {
+function tableDisplay(ufotable) {
   var tbody = d3.select("tbody");
-  uforSightings.forEach((ufoRecord) => {
+  ufotable.forEach((ufoRecord) => {
     var row = tbody.append("tr");
     Object.entries(ufoRecord).forEach(([key, value]) => {
       var cell = row.append("td");
@@ -30,8 +30,8 @@ button.on("click", function(event) {
   if (dateInput.trim() === "" ) {
     var filteredData = tableData;
   } else {
-    var filteredData = tableData.filter(ufoSightings =>
-      ufoSightings.datetime === dateInput.trim());
+    var filteredData = tableData.filter(ufotable =>
+      ufotable.datetime === dateInput.trim());
   };
 
   console.log(filteredData);
