@@ -1,84 +1,39 @@
 var tableData = data;
 
-// console.log(table_Data);
-
-
-let tbody = d3.select("tbody");
-let table = d3.select("table");
-
-
-
-table.attr("class", "table table-striped");
-
-
-
-function build_Table(table_Data) {
-
-  tbody.html("");
-
-  table_Data.forEach((UFO_report) => {
-
-    let row = tbody.append("tr");
-
-    Object.values(UFO_report).forEach((value) => {
-
-      let UFO_data = row.append("td");
-
-        UFO_data.text(value);
-
-      });
-
+function tableDisplay(ufoSightings) {
+  var tbody = d3.select("tbody");
+  uforSightings.forEach((ufoRecord) => {
+    var row = tbody.append("tr");
+    Object.entries(ufoRecord).forEach(([key, value]) => {
+      var cell = row.append("td");
+      cell.html(value);
+    });
   });
-
 };
 
+function deleteTbody() {
+  d3.select("tbody")
+    .selectAll("tr").remove()
+    .selectAll("td").remove();
+};
 
+console.log(tableData);
+tableDisplay(tableData);
 
+var button = d3.select("#filter-btn");
 
-
-
-build_Table(table_Data);
-
-
-let submit = d3.select("#filter-btn");
-
-
-let inputDate = d3.select("#datetime");
-let inputCity = d3.select("#city");
-let inputState = d3.select("#state");
-let inputCountry = d3.select("#country");
-let inputShape = d3.select("#shape");
-let inputShape = d3.select("#comments");
-
-
-// function buttonClick() {
-
-submit.on("click", function() {
-
+button.on("click", function(event) {
   d3.event.preventDefault();
+  deleteTbody();
+  var dateInput = d3.select("#datetime").property("value");
 
+  if (dateInput.trim() === "" ) {
+    var filteredData = tableData;
+  } else {
+    var filteredData = tableData.filter(ufoSightings =>
+      ufoSightings.datetime === dateInput.trim());
+  };
 
-// let date = d3.select("#datetime").property("value");
-
-  let input_Value = inputDate.property("value");
-  console.log(input_Value);
-
-//      let data_Filtered = table_Data;
-
-
-//      if (date) {
-
-//        data_Filtered = data_Filtered.filter(row => row.datetime === date);
-//      }
-
-
-//      table(data_Filtered);
-
-  let data_Filtered = table_Data.filter(UFO_report => UFO_report.datetime == input_Value);
-  console.log(data_Filtered);
-
-
-
-  build_Table(data_Filtered);
-
+  console.log(filteredData);
+  tableDisplay(filteredData);
 });
