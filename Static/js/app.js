@@ -40,7 +40,7 @@ var filterButton = d3.select("#filter-btn");
 var resetButton = d3.select("#reset-btn");
 
 // create a function for filtering the data with the input
-function filterData(){
+function filter(){
 
     // Prevent the webpage from refreshing
     d3.event.preventDefault();
@@ -53,7 +53,7 @@ function filterData(){
     var Shapevalue = inputShape.property("value")
 
     // Apply the conditions for filtering the data and assign it to a variable
-    var filterData = tableData.filter(function(recorded){
+    var filteredData = tableData.filter(function(recorded){
        return ((recorded.datetime === Datevalue ||Datevalue == "" ) &&
                 (recorded.city === Cityvalue ||Cityvalue == "") &&
                 (recorded.state === Statevalue ||Statevalue == "")&&
@@ -63,11 +63,11 @@ function filterData(){
     })
 
     // Print the filtered data to the console
-    console.log(filterData)
+    console.log(filteredData)
     // Empty the table to append with the filtered data
     tbody.text("")
     // update the table with the filtered data
-    filterData.forEach(aliens =>{
+    filteredData.forEach(aliens =>{
         var row = tbody.append("tr")
         columns.forEach(column => {
             if(column =="city" || column =="state" ||column == "country"){
@@ -78,7 +78,7 @@ function filterData(){
     })
 }
 // Add event handler for the click button to filter the table with the given input
-filterButton.on("click",filterData)
+filterButton.on("click",filter)
 
 // create a function for resetting the table
 function resetData(){
