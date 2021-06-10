@@ -48,7 +48,6 @@ let inputCity = d3.select("#city");
 let inputState = d3.select("#state");
 let inputCountry = d3.select("#country");
 let inputShape = d3.select("#shape");
-let inputShape = d3.select("#durationMinutes");
 let inputShape = d3.select("#comments");
 
 
