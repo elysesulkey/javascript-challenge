@@ -54,10 +54,10 @@ function filterData(){
 
     // Apply the conditions for filtering the data and assign it to a variable
     var filteredData = tableData.filter(function(recorded){
-       return ((recorded.datetime === Datevalue || Datevalue == "" ) &&
+       return ((recorded.datetime === Datevalue || Datevalue == "") &&
                 (recorded.city === Cityvalue || Cityvalue == "") &&
-                (recorded.state === Statevalue || Statevalue == "")&&
-                (recorded.country === Countryvalue || Countryvalue == "")&&
+                (recorded.state === Statevalue || Statevalue == "") &&
+                (recorded.country === Countryvalue || Countryvalue == "") &&
                 (recorded.shape === Shapevalue || Shapevalue== "")
             )
     })
