@@ -53,7 +53,7 @@ function filterData(){
     var Shapevalue = inputShape.property("value")
 
     // Apply the conditions for filtering the data and assign it to a variable
-    var filteredData = tableData.filter(function(recorded){
+    var filterData = tableData.filter(function(recorded){
        return ((recorded.datetime === Datevalue ||Datevalue == "" ) &&
                 (recorded.city === Cityvalue ||Cityvalue == "") &&
                 (recorded.state === Statevalue ||Statevalue == "")&&
@@ -63,11 +63,11 @@ function filterData(){
     })
 
     // Print the filtered data to the console
-    console.log(filteredData)
+    console.log(filterData)
     // Empty the table to append with the filtered data
     tbody.text("")
     // update the table with the filtered data
-    filteredData.forEach(aliens =>{
+    filterData.forEach(aliens =>{
         var row = tbody.append("tr")
         columns.forEach(column => {
             if(column =="city" || column =="state" ||column == "country"){
@@ -78,7 +78,7 @@ function filterData(){
     })
 }
 // Add event handler for the click button to filter the table with the given input
-filterButton.on("click",filteredData)
+filterButton.on("click",filterData)
 
 // create a function for resetting the table
 function resetData(){
