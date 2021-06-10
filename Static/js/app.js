@@ -78,7 +78,7 @@ function filterData(){
     })
 }
 // Add event handler for the click button to filter the table with the given input
-filterButton.on("click",filterData)
+filterButton.on("click",filteredData)
 
 // create a function for resetting the table
 function resetData(){
