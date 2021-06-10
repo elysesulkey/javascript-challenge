@@ -43,7 +43,7 @@ resetbutton.on("click", function(event) {
   deleteTbody();
   };
 
-  console.log(filteredData);
-  tableDisplay(filteredData);
+  console.log(tableData);
+  tableDisplay(tableData);
 
 });
