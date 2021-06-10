@@ -19,9 +19,9 @@ function deleteTbody() {
 console.log(tableData);
 tableDisplay(tableData);
 
-var button = d3.select("#filter-btn");
+var filterbutton = d3.select("#filter-btn");
 
-button.on("click", function(event) {
+filterbutton.on("click", function(event) {
   d3.event.preventDefault();
   deleteTbody();
   var dateInput = d3.select("#datetime").property("value");
@@ -36,9 +36,9 @@ button.on("click", function(event) {
   console.log(filteredData);
   tableDisplay(filteredData);
 
-var button = d3.select("#reset-btn");
+var resetbutton = d3.select("#reset-btn");
 
-button.on("click", function(event) {
+resetbutton.on("click", function(event) {
   d3.event.preventDefault();
   deleteTbody();
   };
