@@ -25,6 +25,10 @@ button.on("click", function(event) {
   d3.event.preventDefault();
   deleteTbody();
   var dateInput = d3.select("#datetime").property("value");
+  var cityInput = d3.select("#city).property("value");
+  var stateInput = d3.select("#state").property("value");
+  var countryInput = d3.select("#country").property("value");
+  var shapeInput = d3.select("#shape").property("value");
 
   if (dateInput.trim() === "" ) {
     var filteredData = tableData;
@@ -33,6 +37,33 @@ button.on("click", function(event) {
       ufoSighting.datetime === dateInput.trim());
   };
 
+  if (cityInput.trim() === "" ) {
+    var filteredData = tableData;
+  } else {
+    var filteredData = tableData.filter(ufoSighting =>
+      ufoSighting.city === cityInput.trim());
+  };
+
+  if (stateInput.trim() === "" ) {
+    var filteredData = tableData;
+  } else {
+    var filteredData = tableData.filter(ufoSighting =>
+      ufoSighting.state === stateInput.trim());
+  };
+
+  if (countryInput.trim() === "" ) {
+    var filteredData = tableData;
+  } else {
+    var filteredData = tableData.filter(ufoSighting =>
+      ufoSighting.country === countryInput.trim());
+  };
+
+  if (shapeInput.trim() === "" ) {
+    var filteredData = tableData;
+  } else {
+    var filteredData = tableData.filter(ufoSighting =>
+      ufoSighting.shape === shapeInput.trim());
+  };
   console.log(filteredData);
   tableDisplay(filteredData);
 });
