@@ -1,39 +1,90 @@
+// from data.js
 var tableData = data;
 
-function tableDisplay(ufotable) {
-  var tbody = d3.select("tbody");
-  ufotable.forEach((ufoRecord) => {
-    var row = tbody.append("tr");
-    Object.entries(ufoRecord).forEach(([key, value]) => {
-      var cell = row.append("td");
-      cell.html(value);
-    });
-  });
-};
+// Get a reference to the table body
+var tbody = d3.select("tbody");
 
-function deleteTbody() {
-  d3.select("tbody")
-    .selectAll("tr").remove()
-    .selectAll("td").remove();
-};
-
+// Console.log the data from data.js
 console.log(tableData);
-tableDisplay(tableData);
 
-var button = d3.select("#filter-btn");
+// Create an array with the column names from the data
+var columns = ["datetime","city","state","country","shape","durationMinutes","comments"]
 
-button.on("click", function(event) {
-  d3.event.preventDefault();
-  deleteTbody();
-  var dateInput = d3.select("#datetime").property("value");
+// Loop through the array and append each row to table
+function loadData(){
+    tableData.forEach(aliens =>{
+        var row = tbody.append("tr")
+        columns.forEach(column => {
+            if(column =="city" || column =="state" ||column == "country"){
+                row.append("td").text(aliens[column].toUpperCase())
+              }
+              else row.append("td").text(aliens[column])
+        })
+    })
+}
+// call the function to load the data
+loadData()
 
-  if (dateInput.trim() === "" ) {
-    var filteredData = tableData;
-  } else {
-    var filteredData = tableData.filter(ufotable =>
-      ufotable.datetime === dateInput.trim());
-  };
+// Get a reference to the input element on the page with the id property
+var inputDate = d3.select("#datetime");
+var inputCity = d3.select("#city");
+var inputState = d3.select("#state");
+var inputCountry = d3.select("#country");
+var inputShape = d3.select("#shape");
 
-  console.log(filteredData);
-  tableDisplay(filteredData);
-});
+
+// Get a reference to the filter button on the page with the id property set to `filter-btn`
+var filterButton = d3.select("#filter-btn");
+
+// Get a reference to the filter button on the page with the id property set to `filter-btn`
+var resetButton = d3.select("#reset-btn");
+
+// create a function for filtering the data with the input
+function filterData(){
+
+    // Prevent the webpage from refreshing
+    d3.event.preventDefault();
+
+    // Extract the given input for all the fields on the web page
+    var Datevalue = inputDate.property("value")
+    var Cityvalue = inputCity.property("value")
+    var Statevalue = inputState.property("value")
+    var Countryvalue = inputCountry.property("value")
+    var Shapevalue = inputShape.property("value")
+
+    // Apply the conditions for filtering the data and assign it to a variable
+    var filteredData = tableData.filter(function(recorded){
+       return ((recorded.datetime === Datevalue ||Datevalue == "" ) &&
+                (recorded.city === Cityvalue ||Cityvalue == "") &&
+                (recorded.state === Statevalue ||Statevalue == "")&&
+                (recorded.country === Countryvalue ||Countryvalue == "")&&
+                (recorded.shape === Shapevalue ||Shapevalue== "")
+            )
+    })
+
+    // Print the filtered data to the console
+    console.log(filteredData)
+    // Empty the table to append with the filtered data
+    tbody.text("")
+    // update the table with the filtered data
+    filteredData.forEach(aliens =>{
+        var row = tbody.append("tr")
+        columns.forEach(column => {
+            if(column =="city" || column =="state" ||column == "country"){
+                row.append("td").text(aliens[column].toUpperCase())
+              }
+              else row.append("td").text(aliens[column])
+        })
+    })
+}
+// Add event handler for the click button to filter the table with the given input
+filterButton.on("click",filterData)
+
+// create a function for resetting the table
+function resetData(){
+    tbody.text("")
+    loadData()
+    }
+
+// Add event handler for the reset button to reset the table to original data
+resetButton.on("click",resetData)
