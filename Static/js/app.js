@@ -26,17 +26,28 @@ tableDisplay(tableData)
 function filterclick() {
   d3.event.preventDefault();
   deleteTbody();
-  var filterinput = d3.select("#datetime").property("value") || d3.select("#city").property("value");
-  //var cityinput = d3.select("#city").property("value");
-  //var stateinput = d3.select("#state").property("value");
-  //var countryinput = d3.select("#country").property("value");
-  //var shapeinput = d3.select("#shape").property("value");
-  //var filterinput = dateinput, cityinput
+  var dateinput = d3.select("#datetime").property("value");
+  var cityinput = d3.select("#city").property("value");
+  var stateinput = d3.select("#state").property("value");
+  var countryinput = d3.select("#country").property("value");
+  var shapeinput = d3.select("#shape").property("value");
 
   var filteredData = tableData
-  if (filterinput) {
-    filteredData = filteredData.filter(ufoRecord => (ufoRecord.datetime === filterinput || ufoRecord.city === filterinput))
+  if (dateinput) {
+    filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === dateinput)
   }
+  else if (cityinput) {
+    filteredData = filteredData.filter(ufoRecord => ufoRecord.city === cityinput)
+  }
+  else if (stateinput) {
+    filteredData = filteredData.filter(ufoRecord => ufoRecord.state === stateinput)
+  }
+  else if (countryinput) {
+    filteredData = filteredData.filter(ufoRecord => ufoRecord.country === countryinput)
+  }
+  else if (shapeinput) 
+    filteredData = filteredData.filter(ufoRecord => ufoRecord.shape === shapeinput)
+  
   console.log(filteredData)
   tableDisplay(filteredData)
 }
