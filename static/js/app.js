@@ -36,23 +36,27 @@ function filterclick() {
   if (dateinput) {
     filteredData = filteredData.filter(ufoRecord => ufoRecord.datetime === dateinput)
   }
-  else if (cityinput) {
+
+  if (cityinput) {
     filteredData = filteredData.filter(ufoRecord => ufoRecord.city === cityinput)
   }
-  else if (stateinput) {
+
+  if (stateinput) {
     filteredData = filteredData.filter(ufoRecord => ufoRecord.state === stateinput)
   }
-  else if (countryinput) {
+
+  if (countryinput) {
     filteredData = filteredData.filter(ufoRecord => ufoRecord.country === countryinput)
   }
-  else if (shapeinput) 
+
+  if (shapeinput)
     filteredData = filteredData.filter(ufoRecord => ufoRecord.shape === shapeinput)
-  
+
   console.log(filteredData)
   tableDisplay(filteredData)
 }
 
-function reset(){
+function reset() {
   d3.event.preventDefault();
   deleteTbody();
   tableDisplay(tableData)
